@@ -1,0 +1,13 @@
+logging:
+  file:
+    name: tracker.log
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %m%n'
+    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %m%n'
+
+spring:
+  main:
+    banner-mode: off
+
+server:
+  port: 27799
