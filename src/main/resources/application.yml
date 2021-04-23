@@ -10,4 +10,4 @@ spring:
     banner-mode: off
 
 server:
-  port: 27799
+  port: 29799

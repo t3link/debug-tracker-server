@@ -24,7 +24,12 @@ public final class SimpleRecord {
 
     private static final String CLIENT_IDENTIFY_KEY = "client-version";
 
-    private String identify;
+    private String ip;
+    /**
+     * 响应中包含的 trackerId
+     * 下次 announce 请求，应该携带该信息过来
+     */
+    private String trackerId;
     private Map<String, String> parameters;
     private Map<String, String> headers;
 
@@ -45,9 +50,12 @@ public final class SimpleRecord {
             }
         }
 
+        // ip
+        var ip = request.getRemoteAddr();
+
         // 身份标识
         var identify = RandomStringUtils.randomAlphabetic(5);
-        return new SimpleRecord(identify, parameters, headers);
+        return new SimpleRecord(ip, identify, parameters, headers);
     }
 
 

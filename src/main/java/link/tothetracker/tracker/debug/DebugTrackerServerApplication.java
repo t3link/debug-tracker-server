@@ -1,22 +1,14 @@
 package link.tothetracker.tracker.debug;
 
-import com.google.common.collect.Maps;
 import link.tothetracker.tracker.debug.util.JsonUtil;
-import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.time.Instant;
-import java.util.HashMap;
 
 /**
  * @author t3link
@@ -36,15 +28,15 @@ public class DebugTrackerServerApplication {
 	@GetMapping(path = "/announce")
 	public String announce(HttpServletRequest request) {
 		var record = SimpleRecord.of(request);
-		log.info("[1] {}: ", JsonUtil.toJson(record));
+		log.info("[1] {}", JsonUtil.toJson(record));
 
-		return success(record.getIdentify());
+		return success(record.getTrackerId());
 	}
 
 	@GetMapping(path = "/scrape")
 	public String scrape(HttpServletRequest request) {
 		var record = SimpleRecord.of(request);
-		log.info("[2] {}: ", JsonUtil.toJson(record));
+		log.info("[2] {}", JsonUtil.toJson(record));
 
 		return "de";
 	}
